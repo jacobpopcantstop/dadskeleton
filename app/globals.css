@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --pink: #db2777;
+  --pink-light: #ff69b4;
+  --purple-pink: #da70d6;
+  --yellow: #ca8a04;
+  --yellow-light: #ffd700;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-pink: var(--pink);
+  --color-pink-light: var(--pink-light);
+  --color-purple-pink: var(--purple-pink);
+  --color-yellow: var(--yellow);
+  --color-yellow-light: var(--yellow-light);
+  --font-sans: var(--font-inter);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --foreground: #ffffff;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Animation keyframes */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes rattle {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  10% { transform: translateX(-2px) rotate(-2deg); }
+  20% { transform: translateX(2px) rotate(2deg); }
+  30% { transform: translateX(-2px) rotate(-1deg); }
+  40% { transform: translateX(2px) rotate(1deg); }
+  50% { transform: translateX(0) rotate(0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px var(--pink); }
+  50% { box-shadow: 0 0 15px var(--pink), 0 0 25px var(--pink); }
+}
+
+@keyframes bone-found {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5) rotate(15deg); opacity: 0.8; }
+  100% { transform: scale(0) rotate(45deg); opacity: 0; }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Utility animation classes */
+.animate-wiggle {
+  animation: wiggle 0.5s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-rattle {
+  animation: rattle 0.5s ease-in-out;
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-bone-found {
+  animation: bone-found 0.5s ease-out forwards;
+}
+
+.animate-gradient-text {
+  background: linear-gradient(90deg, var(--pink), var(--yellow), var(--pink));
+  background-size: 200% auto;
+  animation: gradient-shift 3s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Reduce animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-wiggle,
+  .animate-float,
+  .animate-rattle,
+  .animate-shake,
+  .animate-pulse-glow,
+  .animate-gradient-text {
+    animation: none;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Hidden skeleton base styles */
+.hidden-skeleton {
+  opacity: 0.2;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  user-select: none;
+}
+
+.hidden-skeleton:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+.hidden-skeleton:active {
+  transform: scale(0.9);
+}
+
+/* Focus styles for accessibility */
+.focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--pink);
+}
