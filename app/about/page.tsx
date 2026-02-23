@@ -5,14 +5,14 @@ import HiddenSkeleton from "@/components/HiddenSkeleton";
 
 export default function AboutPage() {
   const teamMembers = [
-    { name: "Jacob", role: "Performer / Writer", src: "/photos/just-jacob-img-9966.jpg" },
-    { name: "Paige", role: "Performer", src: "/photos/just-paige-img-5421.jpg" },
-    { name: "Vince", role: "Performer", src: "/photos/feat-vince-img-9972.jpg" },
-    { name: "Ensemble", role: "Rotating Player", src: "/photos/rotating-players-ensemble-img-9968.jpg" },
-    { name: "Kim Knife", role: "Character", src: "/photos/just-paige-kim-knife.jpeg" },
-    { name: "Cast", role: "Live Show", src: "/photos/paige-and-jacob-only-dsc-0164.jpg" },
-    { name: "Duo", role: "Sketch Team", src: "/photos/paige-and-jacob-only-dsc-0083.jpg" },
-    { name: "The Troupe", role: "Dad Skeleton", src: "/photos/paige-and-jacob-only-dsc-0222.jpg" },
+    { name: "Jacob", role: "Performer / Writer", src: "/photos/just-jacob-img-9966.jpg", alt: "Jacob posing in character for Dad Skeleton promo materials" },
+    { name: "Paige", role: "Performer", src: "/photos/just-paige-img-5421.jpg", alt: "Paige portrait from a Dad Skeleton photoshoot" },
+    { name: "Vince", role: "Performer", src: "/photos/feat-vince-img-9972.jpg", alt: "Vince featured portrait with stage-style lighting" },
+    { name: "Ensemble", role: "Rotating Player", src: "/photos/rotating-players-ensemble-img-9968.jpg", alt: "Rotating players ensemble portrait for the troupe" },
+    { name: "Kim Knife", role: "Character", src: "/photos/just-paige-kim-knife.jpeg", alt: "Kim Knife character portrait from a comedy sketch setup" },
+    { name: "Cast", role: "Live Show", src: "/photos/paige-and-jacob-only-dsc-0164.jpg", alt: "Cast photo during a live Dad Skeleton performance" },
+    { name: "Duo", role: "Sketch Team", src: "/photos/paige-and-jacob-only-dsc-0083.jpg", alt: "Paige and Jacob duo photo used for sketch promotion" },
+    { name: "The Troupe", role: "Dad Skeleton", src: "/photos/paige-and-jacob-only-dsc-0222.jpg", alt: "Dad Skeleton troupe portrait featuring core performers" },
   ];
 
   return (
@@ -34,8 +34,8 @@ export default function AboutPage() {
         className="mb-16 aspect-[21/9] w-full rounded-lg border-2 border-foreground/10 overflow-hidden group relative"
       >
         <img
-          src="/photos/paige-and-jacob-only-dsc-0290.jpg"
-          alt="Dad Skeleton troupe photo"
+          src="/photos/paige-and-jacob-only-dsc-0222.jpg"
+          alt="Wide portrait of Dad Skeleton performers in a styled group setup"
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
@@ -100,7 +100,7 @@ export default function AboutPage() {
           >
             <img
               src="/photos/just-jacob-dsc-0183.jpg"
-              alt="Jacob portrait"
+              alt="Black and white portrait of Jacob from a Dad Skeleton shoot"
               className="h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
@@ -112,8 +112,8 @@ export default function AboutPage() {
             className="aspect-square w-full rounded-lg border-2 border-foreground/10 overflow-hidden group relative"
           >
             <img
-              src="/photos/feat-vince-img-8992.jpg"
-              alt="Vince portrait"
+              src="/photos/just-paige-dsc-0167.jpg"
+              alt="Paige portrait with dramatic stage-style composition"
               className="h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
@@ -140,7 +140,7 @@ export default function AboutPage() {
               <div className="aspect-square w-full rounded-lg border-2 border-foreground/10 mb-4 overflow-hidden group relative">
                 <img
                   src={member.src}
-                  alt={member.name}
+                  alt={member.alt}
                   className="h-full w-full object-cover"
                   loading="lazy"
                 />
@@ -167,7 +167,7 @@ export default function AboutPage() {
         >
           <img
             src="/photos/paige-and-jacob-only-dsc-0240.jpg"
-            alt="Dad Skeleton performance photo"
+            alt="Panoramic live-performance photo of Dad Skeleton on stage"
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">

@@ -6,16 +6,28 @@ import HiddenSkeleton from "@/components/HiddenSkeleton";
 
 export default function CalendarPage() {
   const sidebarPhotos = [
-    { label: "Show Photo", src: "/photos/paige-and-jacob-only-dsc-0164.jpg" },
-    { label: "Venue Photo", src: "/photos/paige-and-jacob-only-dsc03740.jpeg" },
-    { label: "Audience Photo", src: "/photos/paige-and-jacob-only-dsc04239.jpeg" },
+    {
+      label: "Show Photo",
+      src: "/photos/paige-and-jacob-only-dsc-0290.jpg",
+      alt: "Dad Skeleton performers during a live sketch moment on stage",
+    },
+    {
+      label: "Venue Photo",
+      src: "/photos/paige-and-jacob-only-dsc03740.jpeg",
+      alt: "Wide venue shot of a Dad Skeleton show with stage lighting",
+    },
+    {
+      label: "Audience Photo",
+      src: "/photos/paige-and-jacob-only-dsc04239.jpeg",
+      alt: "Audience-view perspective of a Dad Skeleton comedy performance",
+    },
   ];
 
   const pastShowPhotos = [
-    { src: "/photos/paige-and-jacob-only-dsc-0079.jpg", alt: "Past show photo 1" },
-    { src: "/photos/paige-and-jacob-only-dsc-0022.jpg", alt: "Past show photo 2" },
-    { src: "/photos/paige-and-jacob-only-dsc-0026.jpg", alt: "Past show photo 3" },
-    { src: "/photos/paige-and-jacob-only-dsc04629.jpeg", alt: "Past show photo 4" },
+    { src: "/photos/paige-and-jacob-only-dsc-0079.jpg", alt: "Cast members in motion during a past sketch performance" },
+    { src: "/photos/paige-and-jacob-only-dsc-0022.jpg", alt: "Dad Skeleton performers mid-scene during an earlier show" },
+    { src: "/photos/paige-and-jacob-only-dsc-0026.jpg", alt: "Close stage moment from a previous Dad Skeleton set" },
+    { src: "/photos/paige-and-jacob-only-dsc04629.jpeg", alt: "Crowd-facing stage shot from a past comedy night" },
   ];
 
   const upcomingShows = [
@@ -81,8 +93,8 @@ export default function CalendarPage() {
         className="mb-12 aspect-[21/9] w-full rounded-lg border-2 border-foreground/10 overflow-hidden group relative"
       >
         <img
-          src="/photos/paige-and-jacob-only-dsc-0290.jpg"
-          alt="Live show photo"
+          src="/photos/paige-and-jacob-only-dsc-0164.jpg"
+          alt="Hero image of Dad Skeleton performing live at a packed show"
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
@@ -145,7 +157,7 @@ export default function CalendarPage() {
             >
               <img
                 src={photo.src}
-                alt={photo.label}
+                alt={photo.alt}
                 className="h-full w-full object-cover"
                 loading="lazy"
               />

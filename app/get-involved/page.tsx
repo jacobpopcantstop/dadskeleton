@@ -7,10 +7,10 @@ import HiddenSkeleton from "@/components/HiddenSkeleton";
 
 export default function GetInvolvedPage() {
   const communityGridPhotos = [
-    { src: "/photos/just-paige-dsc-0127.jpg", alt: "Community photo 1" },
-    { src: "/photos/just-jacob-img-6636.jpg", alt: "Community photo 2" },
-    { src: "/photos/feat-vince-img-9968.jpg", alt: "Community photo 3" },
-    { src: "/photos/rotating-players-ensemble-img-1507.jpg", alt: "Community photo 4" },
+    { src: "/photos/just-paige-dsc-0127.jpg", alt: "Paige in character during a community-focused performance session" },
+    { src: "/photos/just-jacob-img-6636.jpg", alt: "Jacob portrait used for classes and participation callouts" },
+    { src: "/photos/feat-vince-img-9968.jpg", alt: "Vince promo portrait tied to troupe workshops and events" },
+    { src: "/photos/rotating-players-ensemble-img-1507.jpg", alt: "Rotating players image representing the wider Dad Skeleton community" },
   ];
 
   return (
@@ -40,8 +40,8 @@ export default function GetInvolvedPage() {
         className="mb-16 aspect-[3/1] w-full rounded-lg border-2 border-foreground/10 overflow-hidden group relative"
       >
         <img
-          src="/photos/paige-and-jacob-only-dsc-0240.jpg"
-          alt="Dad Skeleton community photo"
+          src="/photos/rotating-players-ensemble-dsc-0183.jpg"
+          alt="Dad Skeleton community banner featuring performers and rotating players"
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
@@ -147,7 +147,7 @@ export default function GetInvolvedPage() {
           >
             <img
               src="/photos/just-paige-dsc-0167.jpg"
-              alt="Dad Skeleton class and community photo"
+              alt="Portrait image for the classes and community sidebar section"
               className="h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
