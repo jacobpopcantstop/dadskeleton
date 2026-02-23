@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function Footer() {
@@ -25,7 +26,14 @@ export default function Footer() {
         <div className="grid gap-8 md:grid-cols-3">
           {/* Brand */}
           <div>
-            <Link href="/" className="inline-block">
+            <Link href="/" className="inline-flex items-center gap-3">
+              <Image
+                src="/logo.png"
+                alt="Dad Skeleton logo"
+                width={44}
+                height={44}
+                className="h-11 w-11 rounded-full border border-foreground/20 object-cover"
+              />
               <span className="text-2xl font-bold tracking-tight">
                 <span className="text-pink">Dad</span>{" "}
                 <span className="text-yellow">Skeleton</span>

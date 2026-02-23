@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -31,8 +32,16 @@ export default function Header() {
         <Link
           href="/"
           onClick={handleLogoClick}
-          className="group"
+          className="group flex items-center gap-3"
         >
+          <Image
+            src="/logo.png"
+            alt="Dad Skeleton logo"
+            width={40}
+            height={40}
+            className="h-10 w-10 rounded-full border border-foreground/20 object-cover"
+            priority
+          />
           <motion.span
             className={`text-2xl font-bold tracking-tight inline-block ${
               isRattling ? "animate-rattle" : ""

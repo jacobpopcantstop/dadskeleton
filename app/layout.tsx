@@ -8,6 +8,10 @@ import SkeletonCounter from "@/components/SkeletonCounter";
 export const metadata: Metadata = {
   title: "Dad Skeleton",
   description: "Comedy troupe - Improv, Sketches, and Live Shows",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
