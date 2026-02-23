@@ -54,16 +54,20 @@ export default function Home() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           whileHover={{ scale: 1.01 }}
-          className="relative aspect-[21/9] w-full rounded-lg border-2 border-dashed border-foreground/20 bg-foreground/5 flex items-center justify-center overflow-hidden group"
+          className="relative aspect-[21/9] w-full rounded-lg border-2 border-foreground/10 overflow-hidden group"
           role="img"
           aria-label="Hero banner showing Dad Skeleton comedy troupe performance"
         >
-          <span className="text-foreground/40 text-lg" aria-hidden="true">Hero Photo / Performance Shot</span>
+          <img
+            src="/photos/paige-and-jacob-only-dsc-0290.jpg"
+            alt="Dad Skeleton performance hero photo"
+            className="h-full w-full object-cover"
+          />
           {/* Hidden Skeleton #1 - Inside hero photo */}
           <HiddenSkeleton id={1} className="absolute bottom-4 right-4" size={18} />
           {/* Skeleton reveal on hover */}
-          <div className="absolute inset-0 bg-foreground/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl opacity-10">💀</span>
+          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl text-white opacity-30">💀</span>
           </div>
         </motion.div>
       </section>
@@ -105,20 +109,32 @@ export default function Home() {
       {/* Photo Grid */}
       <section className="mx-auto max-w-6xl px-6 pb-16">
         <div className="grid gap-4 grid-cols-2 md:grid-cols-3">
-          {[1, 2, 3, 4, 5, 6].map((i) => (
+          {[
+            { src: "/photos/just-paige-kim-knife.jpeg", alt: "Kim Knife portrait" },
+            { src: "/photos/just-jacob-img-9966.jpg", alt: "Jacob portrait" },
+            { src: "/photos/feat-vince-img-9972.jpg", alt: "Vince portrait" },
+            { src: "/photos/just-paige-img-5421.jpg", alt: "Paige portrait" },
+            { src: "/photos/paige-and-jacob-only-dsc-0083.jpg", alt: "Paige and Jacob duo" },
+            { src: "/photos/rotating-players-ensemble-img-9968.jpg", alt: "Ensemble portrait" },
+          ].map((image, i) => (
             <motion.div
-              key={i}
+              key={image.src}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: i * 0.05 }}
+              transition={{ duration: 0.3, delay: (i + 1) * 0.05 }}
               whileHover={{ scale: 1.03, y: -4 }}
-              className="aspect-[4/3] rounded-lg border-2 border-dashed border-foreground/20 bg-foreground/5 flex items-center justify-center overflow-hidden group relative"
+              className="aspect-[4/3] rounded-lg border-2 border-foreground/10 overflow-hidden group relative"
             >
-              <span className="text-foreground/40">Photo {i}</span>
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
               {/* Skeleton reveal on hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-                <span className="text-4xl opacity-10">💀</span>
+              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
+                <span className="text-4xl text-white opacity-30">💀</span>
               </div>
             </motion.div>
           ))}
@@ -163,13 +179,17 @@ export default function Home() {
           viewport={{ once: true }}
           whileHover={{ scale: 1.01 }}
           transition={{ duration: 0.3 }}
-          className="aspect-[3/1] w-full rounded-lg border-2 border-dashed border-foreground/20 bg-foreground/5 flex items-center justify-center overflow-hidden group relative"
+          className="aspect-[3/1] w-full rounded-lg border-2 border-foreground/10 overflow-hidden group relative"
           role="img"
           aria-label="Dad Skeleton team group photo"
         >
-          <span className="text-foreground/40 text-lg" aria-hidden="true">Team Photo</span>
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-            <span className="text-6xl opacity-10">💀</span>
+          <img
+            src="/photos/paige-and-jacob-only-dsc-0222.jpg"
+            alt="Dad Skeleton team group photo"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
+            <span className="text-6xl text-white opacity-30">💀</span>
           </div>
         </motion.div>
       </section>

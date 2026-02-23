@@ -5,15 +5,18 @@ import HiddenSkeleton from "@/components/HiddenSkeleton";
 
 export default function GalleryPage() {
   const images = [
-    { id: "1", alt: "The Skeleton Wars performance", placeholder: "SKW-01" },
-    { id: "2", alt: "Improv night crowd shot", placeholder: "IMP-02" },
-    { id: "3", alt: "Behind the scenes rehearsal", placeholder: "BTS-03" },
-    { id: "4", alt: "Cast photo 2024", placeholder: "CAST-04" },
-    { id: "5", alt: "Live sketch performance", placeholder: "SKT-05", hasSkeleton: true },
-    { id: "6", alt: "Comedy club exterior", placeholder: "VEN-06" },
-    { id: "7", alt: "Backstage moments", placeholder: "BTS-07" },
-    { id: "8", alt: "Audience reactions", placeholder: "AUD-08" },
-    { id: "9", alt: "Costume design showcase", placeholder: "COS-09" },
+    { id: "1", src: "/photos/paige-and-jacob-only-dsc-0290.jpg", alt: "Paige and Jacob portrait", hasSkeleton: true },
+    { id: "2", src: "/photos/just-paige-kim-knife.jpeg", alt: "Kim Knife portrait" },
+    { id: "3", src: "/photos/just-jacob-img-9966.jpg", alt: "Jacob portrait" },
+    { id: "4", src: "/photos/feat-vince-img-9972.jpg", alt: "Vince featured shot" },
+    { id: "5", src: "/photos/paige-and-jacob-only-dsc-0083.jpg", alt: "Paige and Jacob duo shot" },
+    { id: "6", src: "/photos/just-paige-img-5421.jpg", alt: "Paige portrait" },
+    { id: "7", src: "/photos/just-jacob-dsc-0183.jpg", alt: "Jacob black and white portrait" },
+    { id: "8", src: "/photos/rotating-players-ensemble-img-9968.jpg", alt: "Rotating players ensemble" },
+    { id: "9", src: "/photos/paige-and-jacob-only-dsc-0164.jpg", alt: "Paige and Jacob stage photo" },
+    { id: "10", src: "/photos/paige-and-jacob-only-img-9006.jpg", alt: "Paige and Jacob candid" },
+    { id: "11", src: "/photos/feat-vince-img-8992.jpg", alt: "Vince close-up photo" },
+    { id: "12", src: "/photos/paige-and-jacob-only-dsc-0222.jpg", alt: "Paige and Jacob portrait 2" },
   ];
 
   return (
@@ -45,18 +48,16 @@ export default function GalleryPage() {
             whileHover={{ scale: 1.03, y: -4 }}
             className="group aspect-square overflow-hidden rounded-lg border-2 border-foreground/10 bg-foreground/5 hover:border-pink transition-colors relative"
           >
-            <div className="flex h-full w-full items-center justify-center bg-black text-white relative">
-              <div className="text-center">
-                <span className="block text-3xl font-bold text-pink">
-                  {image.placeholder}
-                </span>
-                <span className="mt-2 block text-xs text-white/60">
-                  {image.alt}
-                </span>
-              </div>
+            <div className="relative h-full w-full">
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
               {/* Skeleton reveal on hover */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-                <span className="text-6xl opacity-10">💀</span>
+                <span className="text-6xl text-white opacity-30">💀</span>
               </div>
               {/* Hidden Skeleton #6 - Among the photo grid */}
               {image.hasSkeleton && (
@@ -67,14 +68,6 @@ export default function GalleryPage() {
         ))}
       </div>
 
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="mt-8 text-center text-sm text-foreground/50"
-      >
-        Replace placeholders with actual images in the public/ directory
-      </motion.p>
     </main>
   );
 }
