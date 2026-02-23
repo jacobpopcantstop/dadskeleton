@@ -5,6 +5,19 @@ import MicroCard from "@/components/MicroCard";
 import HiddenSkeleton from "@/components/HiddenSkeleton";
 
 export default function CalendarPage() {
+  const sidebarPhotos = [
+    { label: "Show Photo", src: "/photos/paige-and-jacob-only-dsc-0164.jpg" },
+    { label: "Venue Photo", src: "/photos/paige-and-jacob-only-dsc03740.jpeg" },
+    { label: "Audience Photo", src: "/photos/paige-and-jacob-only-dsc04239.jpeg" },
+  ];
+
+  const pastShowPhotos = [
+    { src: "/photos/paige-and-jacob-only-dsc-0079.jpg", alt: "Past show photo 1" },
+    { src: "/photos/paige-and-jacob-only-dsc-0022.jpg", alt: "Past show photo 2" },
+    { src: "/photos/paige-and-jacob-only-dsc-0026.jpg", alt: "Past show photo 3" },
+    { src: "/photos/paige-and-jacob-only-dsc04629.jpeg", alt: "Past show photo 4" },
+  ];
+
   const upcomingShows = [
     {
       id: "1",
@@ -65,11 +78,15 @@ export default function CalendarPage() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.2 }}
         whileHover={{ scale: 1.01 }}
-        className="mb-12 aspect-[21/9] w-full rounded-lg border-2 border-dashed border-foreground/20 bg-foreground/5 flex items-center justify-center overflow-hidden group relative"
+        className="mb-12 aspect-[21/9] w-full rounded-lg border-2 border-foreground/10 overflow-hidden group relative"
       >
-        <span className="text-foreground/40 text-lg">Live Show Photo</span>
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-          <span className="text-6xl opacity-10">💀</span>
+        <img
+          src="/photos/paige-and-jacob-only-dsc-0290.jpg"
+          alt="Live show photo"
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
+          <span className="text-6xl text-white opacity-30">💀</span>
         </div>
       </motion.div>
 
@@ -116,19 +133,24 @@ export default function CalendarPage() {
 
         {/* Sidebar Photos */}
         <aside className="space-y-4">
-          {["Show Photo", "Venue Photo", "Audience Photo"].map((label, i) => (
+          {sidebarPhotos.map((photo, i) => (
             <motion.div
-              key={label}
+              key={photo.src}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ scale: 1.02, y: -4 }}
-              className={`${i === 1 ? "aspect-square" : "aspect-[4/3]"} w-full rounded-lg border-2 border-dashed border-foreground/20 bg-foreground/5 flex items-center justify-center overflow-hidden group relative`}
+              className={`${i === 1 ? "aspect-square" : "aspect-[4/3]"} w-full rounded-lg border-2 border-foreground/10 overflow-hidden group relative`}
             >
-              <span className="text-foreground/40">{label}</span>
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-                <span className="text-4xl opacity-10">💀</span>
+              <img
+                src={photo.src}
+                alt={photo.label}
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
+                <span className="text-4xl text-white opacity-30">💀</span>
               </div>
             </motion.div>
           ))}
@@ -139,19 +161,24 @@ export default function CalendarPage() {
       <section className="mt-16 pt-16 border-t border-foreground/10">
         <h2 className="text-2xl font-bold mb-6">Past Shows</h2>
         <div className="grid gap-4 grid-cols-2 md:grid-cols-4">
-          {[1, 2, 3, 4].map((i) => (
+          {pastShowPhotos.map((photo, i) => (
             <motion.div
-              key={i}
+              key={photo.src}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
+              transition={{ delay: (i + 1) * 0.05 }}
               whileHover={{ scale: 1.03, y: -4 }}
-              className="aspect-[4/3] rounded-lg border-2 border-dashed border-foreground/20 bg-foreground/5 flex items-center justify-center overflow-hidden group relative"
+              className="aspect-[4/3] rounded-lg border-2 border-foreground/10 overflow-hidden group relative"
             >
-              <span className="text-foreground/40">Past Show {i}</span>
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-                <span className="text-4xl opacity-10">💀</span>
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
+                <span className="text-4xl text-white opacity-30">💀</span>
               </div>
             </motion.div>
           ))}

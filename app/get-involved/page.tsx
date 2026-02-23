@@ -6,6 +6,13 @@ import MicroCard from "@/components/MicroCard";
 import HiddenSkeleton from "@/components/HiddenSkeleton";
 
 export default function GetInvolvedPage() {
+  const communityGridPhotos = [
+    { src: "/photos/just-paige-dsc-0127.jpg", alt: "Community photo 1" },
+    { src: "/photos/just-jacob-img-6636.jpg", alt: "Community photo 2" },
+    { src: "/photos/feat-vince-img-9968.jpg", alt: "Community photo 3" },
+    { src: "/photos/rotating-players-ensemble-img-1507.jpg", alt: "Community photo 4" },
+  ];
+
   return (
     <main className="mx-auto max-w-6xl px-6 py-16">
       <motion.h1
@@ -30,11 +37,15 @@ export default function GetInvolvedPage() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.2 }}
         whileHover={{ scale: 1.01 }}
-        className="mb-16 aspect-[3/1] w-full rounded-lg border-2 border-dashed border-foreground/20 bg-foreground/5 flex items-center justify-center overflow-hidden group relative"
+        className="mb-16 aspect-[3/1] w-full rounded-lg border-2 border-foreground/10 overflow-hidden group relative"
       >
-        <span className="text-foreground/40 text-lg">Community Photo</span>
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-          <span className="text-6xl opacity-10">💀</span>
+        <img
+          src="/photos/paige-and-jacob-only-dsc-0240.jpg"
+          alt="Dad Skeleton community photo"
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
+          <span className="text-6xl text-white opacity-30">💀</span>
         </div>
       </motion.div>
 
@@ -132,11 +143,15 @@ export default function GetInvolvedPage() {
           {/* Photo Placeholder */}
           <motion.div
             whileHover={{ scale: 1.02, y: -4 }}
-            className="aspect-square w-full rounded-lg border-2 border-dashed border-foreground/20 bg-foreground/5 flex items-center justify-center overflow-hidden group relative"
+            className="aspect-square w-full rounded-lg border-2 border-foreground/10 overflow-hidden group relative"
           >
-            <span className="text-foreground/40">Photo</span>
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-              <span className="text-4xl opacity-10">💀</span>
+            <img
+              src="/photos/just-paige-dsc-0167.jpg"
+              alt="Dad Skeleton class and community photo"
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
+              <span className="text-4xl text-white opacity-30">💀</span>
             </div>
           </motion.div>
         </aside>
@@ -145,19 +160,24 @@ export default function GetInvolvedPage() {
       {/* Bottom Photo Grid */}
       <section className="mt-16">
         <div className="grid gap-4 grid-cols-2 md:grid-cols-4">
-          {[1, 2, 3, 4].map((i) => (
+          {communityGridPhotos.map((photo, i) => (
             <motion.div
-              key={i}
+              key={photo.src}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
+              transition={{ delay: (i + 1) * 0.05 }}
               whileHover={{ scale: 1.03, y: -4 }}
-              className="aspect-square rounded-lg border-2 border-dashed border-foreground/20 bg-foreground/5 flex items-center justify-center overflow-hidden group relative"
+              className="aspect-square rounded-lg border-2 border-foreground/10 overflow-hidden group relative"
             >
-              <span className="text-foreground/40">Photo {i}</span>
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-                <span className="text-4xl opacity-10">💀</span>
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
+                <span className="text-4xl text-white opacity-30">💀</span>
               </div>
             </motion.div>
           ))}
