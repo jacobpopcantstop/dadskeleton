@@ -65,10 +65,6 @@ export default function Home() {
           />
           {/* Hidden Skeleton #1 - Inside hero photo */}
           <HiddenSkeleton id={1} className="absolute bottom-4 right-4" size={18} />
-          {/* Skeleton reveal on hover */}
-          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl text-white opacity-30">💀</span>
-          </div>
         </motion.div>
       </section>
 
@@ -132,10 +128,6 @@ export default function Home() {
                 className="h-full w-full object-cover"
                 loading="lazy"
               />
-              {/* Skeleton reveal on hover */}
-              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-                <span className="text-4xl text-white opacity-30">💀</span>
-              </div>
             </motion.div>
           ))}
         </div>
@@ -188,9 +180,6 @@ export default function Home() {
             alt="Dad Skeleton team group photo"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-            <span className="text-6xl text-white opacity-30">💀</span>
-          </div>
         </motion.div>
       </section>
     </main>

@@ -38,9 +38,6 @@ export default function AboutPage() {
           alt="Wide portrait of Dad Skeleton performers in a styled group setup"
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-          <span className="text-6xl text-white opacity-30">💀</span>
-        </div>
       </motion.div>
 
       <div className="grid gap-12 lg:grid-cols-3">
@@ -103,9 +100,6 @@ export default function AboutPage() {
               alt="Black and white portrait of Jacob from a Dad Skeleton shoot"
               className="h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-              <span className="text-4xl text-white opacity-30">💀</span>
-            </div>
           </motion.div>
           <motion.div
             whileHover={{ scale: 1.02, y: -4 }}
@@ -116,9 +110,6 @@ export default function AboutPage() {
               alt="Paige portrait with dramatic stage-style composition"
               className="h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-              <span className="text-4xl text-white opacity-30">💀</span>
-            </div>
           </motion.div>
         </aside>
       </div>
@@ -144,9 +135,6 @@ export default function AboutPage() {
                   className="h-full w-full object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-                  <span className="text-4xl text-white opacity-30">💀</span>
-                </div>
                 {/* Hidden Skeleton #3 - In the 4th team member */}
                 {i === 3 && (
                   <HiddenSkeleton id={3} className="absolute bottom-2 right-2" size={14} />
@@ -170,9 +158,6 @@ export default function AboutPage() {
             alt="Panoramic live-performance photo of Dad Skeleton on stage"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-            <span className="text-6xl text-white opacity-30">💀</span>
-          </div>
         </motion.div>
         {/* Hidden Skeleton #4 - Camouflaged in footer border area */}
         <div className="mt-8 border-t border-foreground/10 pt-4 relative">

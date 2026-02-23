@@ -55,10 +55,6 @@ export default function GalleryPage() {
                 className="h-full w-full object-cover"
                 loading="lazy"
               />
-              {/* Skeleton reveal on hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-                <span className="text-6xl text-white opacity-30">💀</span>
-              </div>
               {/* Hidden Skeleton #6 - Among the photo grid */}
               {image.hasSkeleton && (
                 <HiddenSkeleton id={6} className="absolute bottom-2 right-2" size={16} />

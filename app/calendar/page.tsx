@@ -97,9 +97,6 @@ export default function CalendarPage() {
           alt="Hero image of Dad Skeleton performing live at a packed show"
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-          <span className="text-6xl text-white opacity-30">💀</span>
-        </div>
       </motion.div>
 
       <div className="grid gap-12 lg:grid-cols-3">
@@ -161,9 +158,6 @@ export default function CalendarPage() {
                 className="h-full w-full object-cover"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-                <span className="text-4xl text-white opacity-30">💀</span>
-              </div>
             </motion.div>
           ))}
         </aside>
@@ -189,9 +183,6 @@ export default function CalendarPage() {
                 className="h-full w-full object-cover"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-                <span className="text-4xl text-white opacity-30">💀</span>
-              </div>
             </motion.div>
           ))}
         </div>

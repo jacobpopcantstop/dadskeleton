@@ -44,9 +44,6 @@ export default function GetInvolvedPage() {
           alt="Dad Skeleton community banner featuring performers and rotating players"
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-          <span className="text-6xl text-white opacity-30">💀</span>
-        </div>
       </motion.div>
 
       <div className="grid gap-12 lg:grid-cols-3">
@@ -150,9 +147,6 @@ export default function GetInvolvedPage() {
               alt="Portrait image for the classes and community sidebar section"
               className="h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-              <span className="text-4xl text-white opacity-30">💀</span>
-            </div>
           </motion.div>
         </aside>
       </div>
@@ -176,9 +170,6 @@ export default function GetInvolvedPage() {
                 className="h-full w-full object-cover"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none flex items-center justify-center">
-                <span className="text-4xl text-white opacity-30">💀</span>
-              </div>
             </motion.div>
           ))}
         </div>
