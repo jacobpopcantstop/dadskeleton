@@ -18,7 +18,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Site typography is configured in `app/globals.css` (Courier-family styling).
+
+## Admin Copy Workflow
+
+Use `/admin` to edit copy rows and one-click publish to GitHub (branch + commit + PR).
+
+Setup details are in `ADMIN_SETUP.md`.
 
 ## Learn More
 
