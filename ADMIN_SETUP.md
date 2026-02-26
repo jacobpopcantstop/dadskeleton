@@ -4,7 +4,7 @@ The `/admin` page supports one-click publish:
 
 1. Edit copy rows.
 2. Click `Publish`.
-3. Server creates a branch, commits `content/copywriting-sheet.csv`, and opens a PR.
+3. Server creates a branch, commits `content/copywriting-sheet.csv`, auto-applies eligible `new_text` updates to site files, and opens a PR.
 
 ## Required Environment Variables
 
@@ -39,4 +39,7 @@ Optional:
 ## Notes
 
 - If `ADMIN_PASSWORD` is not set, admin routes are open by default.
-- Admin currently edits and publishes `content/copywriting-sheet.csv`.
+- Publish includes safe auto-apply rules:
+  - skips empty/unchanged rows
+  - skips very short `current_text` values
+  - skips ambiguous rows where a `current_text` matches multiple places

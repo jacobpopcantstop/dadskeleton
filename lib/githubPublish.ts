@@ -5,6 +5,7 @@ interface PublishResult {
   commitSha: string;
   prNumber: number;
   prUrl: string;
+  applyReport?: ApplyReport;
 }
 
 interface GitHubRefResponse {
@@ -12,6 +13,56 @@ interface GitHubRefResponse {
     sha: string;
   };
 }
+
+export interface CopyRow {
+  id: string;
+  page: string;
+  section: string;
+  field: string;
+  current_text: string;
+  new_text: string;
+  notes: string;
+}
+
+interface ApplyReport {
+  attempted: number;
+  applied: number;
+  skipped: number;
+  details: Array<{
+    id: string;
+    status: "applied" | "skipped";
+    reason?: string;
+    file?: string;
+  }>;
+}
+
+const MANAGED_FILES = [
+  "app/layout.tsx",
+  "components/Header.tsx",
+  "components/Footer.tsx",
+  "app/page.tsx",
+  "app/about/page.tsx",
+  "app/videos/page.tsx",
+  "app/gallery/page.tsx",
+  "app/calendar/page.tsx",
+  "app/tools/page.tsx",
+  "app/get-involved/page.tsx",
+  "app/bone-zone/page.tsx",
+  "app/not-found.tsx",
+];
+
+const PAGE_TO_FILES: Record<string, string[]> = {
+  global: ["app/layout.tsx", "components/Header.tsx", "components/Footer.tsx"],
+  home: ["app/page.tsx"],
+  about: ["app/about/page.tsx"],
+  videos: ["app/videos/page.tsx"],
+  gallery: ["app/gallery/page.tsx"],
+  calendar: ["app/calendar/page.tsx"],
+  tools: ["app/tools/page.tsx"],
+  "get-involved": ["app/get-involved/page.tsx"],
+  "bone-zone": ["app/bone-zone/page.tsx"],
+  "404": ["app/not-found.tsx"],
+};
 
 async function githubRequest<T>(
   pathname: string,
@@ -47,9 +98,129 @@ function getRepoConfig() {
   return { owner, repo, baseBranch };
 }
 
+async function getFileAtRef(
+  owner: string,
+  repo: string,
+  filePath: string,
+  ref: string
+): Promise<{ sha: string; content: string }> {
+  const data = await githubRequest<{ sha: string; content: string }>(
+    `/repos/${owner}/${repo}/contents/${filePath}?ref=${ref}`
+  );
+  const decoded = Buffer.from(data.content.replaceAll("\n", ""), "base64").toString(
+    "utf8"
+  );
+  return { sha: data.sha, content: decoded };
+}
+
+async function putFile(
+  owner: string,
+  repo: string,
+  filePath: string,
+  content: string,
+  branch: string,
+  message: string
+): Promise<{ sha: string }> {
+  let existingSha: string | undefined;
+  try {
+    const existing = await githubRequest<{ sha: string }>(
+      `/repos/${owner}/${repo}/contents/${filePath}?ref=${branch}`
+    );
+    existingSha = existing.sha;
+  } catch {
+    existingSha = undefined;
+  }
+
+  const updated = await githubRequest<{ content: { sha: string } }>(
+    `/repos/${owner}/${repo}/contents/${filePath}`,
+    {
+      method: "PUT",
+      body: JSON.stringify({
+        message,
+        content: Buffer.from(content, "utf8").toString("base64"),
+        branch,
+        sha: existingSha,
+      }),
+    }
+  );
+  return { sha: updated.content.sha };
+}
+
+function shouldSkipRow(row: CopyRow): string | null {
+  const current = row.current_text?.trim() ?? "";
+  const next = row.new_text?.trim() ?? "";
+  if (!next) return "empty_new_text";
+  if (!current) return "empty_current_text";
+  if (current === next) return "unchanged";
+  if (current.length < 8) return "current_text_too_short";
+  return null;
+}
+
+function applyRowsToFiles(
+  rows: CopyRow[],
+  fileContents: Map<string, string>
+): { updatedFiles: Map<string, string>; report: ApplyReport } {
+  const updated = new Map(fileContents);
+  const details: ApplyReport["details"] = [];
+
+  for (const row of rows) {
+    const skip = shouldSkipRow(row);
+    if (skip) {
+      details.push({ id: row.id, status: "skipped", reason: skip });
+      continue;
+    }
+
+    const targetFiles =
+      PAGE_TO_FILES[row.page] && PAGE_TO_FILES[row.page].length > 0
+        ? PAGE_TO_FILES[row.page]
+        : MANAGED_FILES;
+
+    const matches: Array<{ file: string; count: number }> = [];
+    for (const file of targetFiles) {
+      const content = updated.get(file);
+      if (!content) continue;
+      const count = content.split(row.current_text).length - 1;
+      if (count > 0) matches.push({ file, count });
+    }
+
+    const totalMatches = matches.reduce((sum, m) => sum + m.count, 0);
+    if (totalMatches === 0) {
+      details.push({ id: row.id, status: "skipped", reason: "no_match_found" });
+      continue;
+    }
+    if (totalMatches > 1) {
+      details.push({
+        id: row.id,
+        status: "skipped",
+        reason: "ambiguous_multiple_matches",
+      });
+      continue;
+    }
+
+    const target = matches[0].file;
+    const content = updated.get(target)!;
+    const next = content.replace(row.current_text, row.new_text);
+    updated.set(target, next);
+    details.push({ id: row.id, status: "applied", file: target });
+  }
+
+  const applied = details.filter((d) => d.status === "applied").length;
+  const skipped = details.length - applied;
+  return {
+    updatedFiles: updated,
+    report: {
+      attempted: details.length,
+      applied,
+      skipped,
+      details,
+    },
+  };
+}
+
 export async function publishCopySheetToBranch(args: {
   filePath: string;
   fileContent: string;
+  rows?: CopyRow[];
   commitMessage?: string;
   prTitle?: string;
   prBody?: string;
@@ -70,29 +241,42 @@ export async function publishCopySheetToBranch(args: {
     }),
   });
 
-  let existingSha: string | undefined;
-  try {
-    const existing = await githubRequest<{ sha: string }>(
-      `/repos/${owner}/${repo}/contents/${args.filePath}?ref=${branch}`
-    );
-    existingSha = existing.sha;
-  } catch {
-    existingSha = undefined;
-  }
-
   const commitMessage = args.commitMessage || "Update site copy via admin";
-  const updatedFile = await githubRequest<{ content: { sha: string } }>(
-    `/repos/${owner}/${repo}/contents/${args.filePath}`,
-    {
-      method: "PUT",
-      body: JSON.stringify({
-        message: commitMessage,
-        content: Buffer.from(args.fileContent, "utf8").toString("base64"),
-        branch,
-        sha: existingSha,
-      }),
-    }
+
+  // Always write the CSV first.
+  const csvResult = await putFile(
+    owner,
+    repo,
+    args.filePath,
+    args.fileContent,
+    branch,
+    commitMessage
   );
+
+  let applyReport: ApplyReport | undefined;
+  if (Array.isArray(args.rows) && args.rows.length > 0) {
+    const fileContents = new Map<string, string>();
+    for (const file of MANAGED_FILES) {
+      const loaded = await getFileAtRef(owner, repo, file, branch);
+      fileContents.set(file, loaded.content);
+    }
+
+    const applied = applyRowsToFiles(args.rows, fileContents);
+    applyReport = applied.report;
+
+    for (const [file, content] of applied.updatedFiles.entries()) {
+      if (content !== fileContents.get(file)) {
+        await putFile(
+          owner,
+          repo,
+          file,
+          content,
+          branch,
+          `Admin: apply copy rows to ${file}`
+        );
+      }
+    }
+  }
 
   const pr = await githubRequest<{ number: number; html_url: string }>(
     `/repos/${owner}/${repo}/pulls`,
@@ -123,8 +307,9 @@ export async function publishCopySheetToBranch(args: {
 
   return {
     branch,
-    commitSha: updatedFile.content.sha,
+    commitSha: csvResult.sha,
     prNumber: pr.number,
     prUrl: pr.html_url,
+    applyReport,
   };
 }

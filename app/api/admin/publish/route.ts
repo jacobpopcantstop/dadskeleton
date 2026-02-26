@@ -37,6 +37,7 @@ export async function POST(req: Request) {
   const publish = await publishCopySheetToBranch({
     filePath: "content/copywriting-sheet.csv",
     fileContent: csvContent,
+    rows: rows || [],
     commitMessage: body.commitMessage,
     prTitle: body.prTitle,
     prBody: body.prBody,

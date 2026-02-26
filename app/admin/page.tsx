@@ -17,6 +17,11 @@ type PublishResult = {
   prNumber: number;
   prUrl: string;
   commitSha: string;
+  applyReport?: {
+    attempted: number;
+    applied: number;
+    skipped: number;
+  };
 };
 
 export default function AdminPage() {
@@ -282,6 +287,14 @@ export default function AdminPage() {
               #{lastPublish.prNumber}
             </a>
           </p>
+          {lastPublish.applyReport && (
+            <p>
+              <strong>Auto-apply:</strong>{" "}
+              {lastPublish.applyReport.applied} applied /{" "}
+              {lastPublish.applyReport.skipped} skipped (
+              {lastPublish.applyReport.attempted} attempted)
+            </p>
+          )}
         </div>
       )}
 
