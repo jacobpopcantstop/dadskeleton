@@ -3,6 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #000000;
+  --font-site: "Courier New", Courier, monospace;
   --pink: #db2777;
   --pink-light: #ff69b4;
   --purple-pink: #da70d6;
@@ -18,7 +19,7 @@
   --color-purple-pink: var(--purple-pink);
   --color-yellow: var(--yellow);
   --color-yellow-light: var(--yellow-light);
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-site);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,10 +29,11 @@
   }
 }
 
+html,
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-site);
   font-weight: 400;
 }
 
