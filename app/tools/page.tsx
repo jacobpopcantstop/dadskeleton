@@ -120,7 +120,7 @@ const writingTools = [
     id: "synax",
     name: "Synax",
     tagline: "Creative Engine",
-    description: "AI-powered prompt generation. Discover unexpected word combinations to spark new creative directions.",
+    description: "A random word generator with other cool features. Great for brainstorming.",
     features: ["Random Prompts", "Rhyme Finder", "Context Mode"],
     href: "/writing-tools/Synax.html",
     color: "#da70d6",
@@ -140,7 +140,7 @@ const writingTools = [
     id: "wribbon",
     name: "Wribbon",
     tagline: "Flow State Writing",
-    description: "Minimalist, distraction-free drafting. Zen mode hides the UI while you write, keeping focus on the words.",
+    description: "Minimalist text editor. Keep it zen and clean, buddy boy.",
     features: ["Zen Mode", "Word Goals", "Timer"],
     href: "/writing-tools/Wribbon.html",
     color: "#fd19c8",
@@ -155,16 +155,6 @@ const writingTools = [
     href: "/writing-tools/Courius.html",
     color: "#fae84f",
     icon: "🎬",
-  },
-  {
-    id: "flowstate",
-    name: "FlowState",
-    tagline: "Writing Game",
-    description: "Gamified writing sessions with flow mechanics. Build combos, earn sparks, and maintain your writing momentum.",
-    features: ["Flow Meter", "Combos", "Sparks"],
-    href: "/writing-tools/FlowState.html",
-    color: "#fd19c8",
-    icon: "🔥",
   },
   {
     id: "withernaught",
@@ -306,7 +296,7 @@ export default function ToolsPage() {
         transition={{ delay: 0.1 }}
         className="mb-12 text-lg text-foreground/70"
       >
-        Interactive generators to spark creativity for your improv and sketch writing.
+        Tools for writers. We use this for the classes, but they&apos;re actually free!
       </motion.p>
 
       <div className="grid gap-8 md:grid-cols-2">
@@ -348,7 +338,8 @@ export default function ToolsPage() {
         transition={{ delay: 0.1 }}
         className="mb-12 text-lg text-foreground/70"
       >
-        A complete writer&apos;s toolkit for brainstorming, structuring, drafting, and formatting your creative work.
+        A set of pretty useful webapps for idea generation, structuring your script,
+        writing it, and more!
       </motion.p>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
