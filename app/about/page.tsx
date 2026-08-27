@@ -51,9 +51,10 @@ export default function AboutPage() {
             >
               <h2 className="mb-4 text-2xl font-bold">Our Troupe</h2>
               <p className="text-lg leading-relaxed text-foreground/80">
-                Dad Skeleton is a comedy troupe dedicated to bringing laughter through
-                improv, sketch comedy, and live performances. We blend absurdist
-                humor with sharp wit to create unforgettable shows.
+                Dad Skeleton is a comedy troupe obsessed with the craft of sketch comedy,
+                dedicated to meticulous writing, top-notch casting, focused rehearsals,
+                and a relentless calendar of shows, classes, and community events. All
+                because it&apos;s the most fun we know how to have.
               </p>
             </motion.div>
 
@@ -66,9 +67,9 @@ export default function AboutPage() {
             >
               <h2 className="mb-4 text-2xl font-bold">Our Mission</h2>
               <p className="text-lg leading-relaxed text-foreground/80">
-                We believe comedy should be bold, inclusive, and boundary-pushing.
-                Our mission is to create a space where audiences can escape the
-                ordinary and experience the unexpected.
+                Our mission is to make hilarious and well-crafted comedy experiences with
+                the funniest people in San Diego, to build up the local comedy scene, to
+                spread that energy across America, and to not die boringly.
               </p>
             </motion.div>
 
@@ -81,9 +82,9 @@ export default function AboutPage() {
             >
               <h2 className="mb-4 text-2xl font-bold">The Team</h2>
               <p className="text-lg leading-relaxed text-foreground/80">
-                Our performers come from diverse backgrounds in theater, comedy, and
-                the arts. Together, we craft shows that are equal parts chaos and
-                brilliance.
+                Our performers are all Emmy snubs coming from local theaters and improv
+                teams. We&apos;re always looking for talented folks to read our words and get
+                on stage!
               </p>
             </motion.div>
           </section>
