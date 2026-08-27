@@ -78,11 +78,12 @@ export default function Home() {
         >
           <h2 className="mb-8 text-center text-3xl font-bold">
             Next Show:{" "}
-            <span className="text-yellow">The Skeleton Wars</span>
+            <span className="text-yellow">You</span>
           </h2>
           <p className="mx-auto max-w-2xl text-center text-lg text-foreground/70">
-            Our flagship production returns February 14th. Bones will rattle.
-            Laughs will echo. Don&apos;t miss the most skeletal comedy event of the year.
+            Our next revue is the ambitious and ill-advised &quot;You&quot; show on September
+            25th at FCI. Don&apos;t miss this surreal experience where you, the audience
+            member, are in every scene.
           </p>
           <div className="mt-8 text-center">
             <Link
@@ -146,8 +147,8 @@ export default function Home() {
               Stay in the Loop
             </motion.h2>
             <p className="text-foreground/70 mb-8 max-w-xl mx-auto">
-              Get show announcements, behind-the-scenes content, and exclusive updates
-              delivered straight to your inbox.
+              We send pretty funny stuff once a month, straight to your very email, plus
+              all the upcoming shows, classes, and announcements you want to hear about.
             </p>
 
             <a
