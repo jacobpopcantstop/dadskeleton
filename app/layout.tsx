@@ -5,12 +5,15 @@ import Footer from "@/components/Footer";
 import { SkeletonHuntProvider } from "@/contexts/SkeletonHuntContext";
 import SkeletonCounter from "@/components/SkeletonCounter";
 
+const favicon = "/logo.png?v=20260827";
+
 export const metadata: Metadata = {
   title: "Dad Skeleton",
   description: "Comedy troupe - Improv, Sketches, and Live Shows",
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: favicon,
+    shortcut: favicon,
+    apple: favicon,
   },
 };
 
